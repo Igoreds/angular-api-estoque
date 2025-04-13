@@ -1,4 +1,4 @@
-# 🎨 Frontend do Sistema de Gerenciamento de Estoque
+#  Frontend do Sistema de Gerenciamento de Estoque
 ## 📌 Sobre o Projeto
 Este é o frontend Angular do sistema de gerenciamento de estoque e vendas, desenvolvido para consumir a API RESTful em Spring Boot. A aplicação fornece uma interface moderna, responsiva e intuitiva para todas as operações de produtos e vendas.
 
