@@ -11,7 +11,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProdutoService } from '../../services/produto.service';
 import { VendaService } from '../../services/venda.service';
 import { Produto } from '../../models/produto.model';
-import { Router } from '@angular/router'; // Importe o Router
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-venda-form',
@@ -39,7 +39,7 @@ export class VendaFormComponent implements OnInit {
     private produtoService: ProdutoService,
     private vendaService: VendaService,
     private snackBar: MatSnackBar,
-    private router: Router // Adicione o Router no construtor
+    private router: Router 
   ) {
     this.vendaForm = this.fb.group({
       produtoId: ['', Validators.required],
@@ -84,7 +84,7 @@ export class VendaFormComponent implements OnInit {
       error: (err) => {
         let errorMessage = 'Erro ao registrar venda';
         
-        // Tratamento detalhado do erro
+    
         if (err.error && err.error.message) {
           errorMessage = err.error.message;
         } else if (err.statusText) {

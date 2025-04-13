@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../services/produto.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ProdutoEditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-produto-list',
@@ -64,7 +65,39 @@ export class ProdutoListComponent implements OnInit {
   }
 
   editarProduto(id: number): void {
-    // Navegação é tratada pelo routerLink no template
+    this.produtoService.buscarProdutoPorId(id).subscribe({
+      next: (produto) => {
+        const dialogRef = this.dialog.open(ProdutoEditDialogComponent, {
+          width: '500px',
+          data: produto
+        });
+  
+        dialogRef.afterClosed().subscribe((result: Produto) => {
+          if (result) {
+            this.produtoService.atualizarProduto(result.id!, result).subscribe({
+              next: () => {
+                this.snackBar.open('Produto atualizado com sucesso', 'Fechar', {
+                  duration: 3000
+                });
+                this.carregarProdutos();
+              },
+              error: (err) => {
+                this.snackBar.open('Erro ao atualizar produto', 'Fechar', {
+                  duration: 3000
+                });
+                console.error(err);
+              }
+            });
+          }
+        });
+      },
+      error: (err) => {
+        this.snackBar.open('Erro ao carregar produto para edição', 'Fechar', {
+          duration: 3000
+        });
+        console.error(err);
+      }
+    });
   }
 
   confirmarExclusao(produto: Produto): void {

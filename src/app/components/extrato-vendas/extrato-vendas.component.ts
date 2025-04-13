@@ -92,7 +92,8 @@ export class ExtratoVendasComponent {
           vendas: response.vendas || [],
           valorTotal: response.valorTotalGeral || 0,
           valorTotalPorProduto: response.valorTotalPorProduto || {},
-          totalVendas: response.vendas?.length || 0
+          totalVendas: response.vendas?.length || 0,
+          quantidadeVendida: response.quantidadeVendida || 0
         };
         this.dataSource.data = this.extrato.vendas;
         this.extratoCarregado = true;

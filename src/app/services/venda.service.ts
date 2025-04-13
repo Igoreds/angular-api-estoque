@@ -27,7 +27,7 @@ export class VendaService {
         dataFim: dataFim
       }
     }).pipe(
-      tap(response => console.log('Resposta da API:', response)), // Adicione este log
+      tap(response => console.log('Resposta da API:', response)), 
       catchError(error => {
         console.error('Erro na requisição:', error);
         return throwError(() => error);
